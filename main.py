@@ -6,8 +6,9 @@ def main():
 
     path = "Puzzle.txt"
     py_s = Solver.SudokuSolver(path)
+    py_s.visualize()
 
-    while(py_s.has_next):
+    while(py_s.has_next()):
         py_s.step()
         draw(py_s.visualize())
 
