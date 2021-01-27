@@ -10,7 +10,9 @@ def main():
 
     while(py_s.has_next()):
         py_s.step()
-        draw(py_s.visualize())
+        #py_s.visualize()
+    print(py_s.steps)
+    py_s.visualize()
 
 def draw(input: str):
     pass

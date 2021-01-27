@@ -19,9 +19,9 @@ class Cell:
 
     # returns the next number, does not set anything
     def next_num(self):
-        for j in range(self.num, 9):
-            if self.possible_nums[j] != 0:
-                return self.num
+        for num_i in range(self.num+1, 10):
+            if self.possible_nums[num_i-1] != 0:
+                return num_i
         return -1 # this is only if there are no possible nums
     
     # removes number given num
@@ -34,4 +34,7 @@ class Cell:
 
     def get_num(self):
         return self.num
+
+    def reset_i(self):
+        self.possible_nums = [1, 1, 1, 1, 1, 1, 1, 1, 1]
 
