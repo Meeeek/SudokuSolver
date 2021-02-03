@@ -6,10 +6,9 @@ import time
 
 class SudokuSolver:
 
-    # this is a list of the columns, that way when calling it's x axis first
-    # the numbers are placeholders, the actual list is a list of Cell objects
+    # this is a list of the rows, that way when calling it's y axis first
     cells = []
-    origin_pts = []
+    #origin_pts = []
 
     """
     Initializer
@@ -31,10 +30,12 @@ class SudokuSolver:
                 line = file.readline().split()
                 for x_index in range(9):
                     num = int(line[x_index])
-                    self.cells[y_index].append(cell.Cell(num, x_index, y_index))
+                    currCell = cell.Cell(num, x_index, y_index)
+
+                    self.cells[y_index].append(currCell)
                         # This passes in the num, x_index, and y_index
-                    if num != 0:
-                        self.origin_pts.append((x_index, y_index))
+                    #if num != 0:
+                        #self.origin_pts.append((x_index, y_index))
             # readline to get rid of white space
             file.readline()
         # The coordinates are x axis then y axis
@@ -53,7 +54,6 @@ class SudokuSolver:
             self.get_next(self.curr)
             currCell = self.cells[self.curr[1]][self.curr[0]]
 
-        print(self.curr)
         # if the current cell is valid
         if self.is_valid(currCell): # if the cell is valid, move on
             self.get_next(self.curr) # moves coordinates to next position
@@ -119,7 +119,6 @@ class SudokuSolver:
         # checking square
         # first step find quadrant
         top_left = ((x//3) * 3, (y//3) * 3)
-        print(f"top_left: {top_left}")
         # second step interate through indexes
         for x_i in range(top_left[0], top_left[0]+3):
             for y_i in range(top_left[1], top_left[1]+3):
